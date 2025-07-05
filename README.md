@@ -16,6 +16,9 @@ Um sistema de gerenciamento de diretórios em árvore, via terminal, simulando c
 - 📖 Histórico de comandos digitados (`history`)EXTRA!!!!
 - 📃 Persistência de estrutura em arquivo `directory.txt`
 
+-OBS: (O login e o nome do computador é puxado através de um comando para o seu sistema operacional, a senha é criada na hora.
+Caso não queira que o código utilize os seus login de verdade, comente a linha que faz isso em Arquive, na função que carrega o arquivo)
+
 ---
 
 ## 📦 Estrutura do Projeto
@@ -80,16 +83,14 @@ linux e afins, mas foi um bom aprendizado)
 ### 👨‍🏫 Dificuldades do Felipe Fonseca
 
 <!--
-Espaço para seu amigo comentar as dificuldades que você teve
-e como você lidou com elas (se quiser usar como feedback).
-Exemplo:
-- [Seu Nome] teve dificuldades com ponteiros, mas conseguiu entender após revisar o código.
-- Mandou bem no comando move depois de várias tentativas.
--->
-
-- 
-
-
+- Criar as funções de inserir e remover elementos: servem como base para outras funções e, sozinhas, tinham que tratar diferentes
+casos, foi o maior tempo gasto da minha parte.
+- Funções de String: vários momentos tive que fazer alterações nas strings, a ponte de ter que criar um arquivo só com funções
+que manipulam Strings.
+- Função de mkdir e rm. Além de tratar os casos com os outros comandos, eu tentei tratar o caso em que você passa /root/...
+para que ele começasse a pesquisa a partir do começo, mas estava dando tantos erros que eu desisti da ideia.
+- Função clear e de carregar credenciais: são duas funções que possuem funções diretas do sistema operacional, então tive
+que fazer de uma forma que ele verificasse qual o sistema operacional primeiro, e executasse depois.
 ---
 
 🛠️ Tecnologias
