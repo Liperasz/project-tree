@@ -1,0 +1,5 @@
+root [DIR]
+root/Meus_Documentos [DIR]
+root/Games [DIR]
+root/Games/Fortnite [DIR]
+root/Games/Fortnite/Vbucks [DIR]

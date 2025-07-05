@@ -1,0 +1,10 @@
+cmake-build-debug/
+.idea/
+
+# Ignora só o arquivo config.bin dentro da pasta config
+config/config.bin
+
+# Garante que a pasta config não seja ignorada (mesmo que esteja vazia)
+!config/
+# Garante que arquivos "placeholder" dentro de config sejam mantidos
+!config/.gitkeep
