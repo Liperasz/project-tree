@@ -175,11 +175,13 @@ void command_list(Element* current_dir, int r) {
 }
 
 void command_clear() {
-
+#ifdef _WIN32
     system("cls");
-
-
+#else
+    system("clear");
+#endif
 }
+
 
 void command_help() {
 

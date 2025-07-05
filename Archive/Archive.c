@@ -7,7 +7,10 @@
 #include <string.h>
 #include "Archive.h"
 #include <unistd.h>
-
+#ifdef _WIN32
+#include <winsock2.h> // gethostname no Windows
+#pragma comment(lib, "Ws2_32.lib") // Linka a lib do Winsock
+#endif
 #include "../Command/Command.h"
 
 int loadFile(Tree* tree, char* name) {
@@ -74,8 +77,22 @@ int loadCredentials(Credentials* data, char* file_name) {
     if (file == NULL) {
         printf("Archive could not be opened\n");
 
-
         strncpy(data->computer, "desktop-0000", 63);
+        data->computer[63] = '\0';
+
+#ifdef _WIN32
+        WSADATA wsaData;
+        if (WSAStartup(MAKEWORD(2, 2), &wsaData) == 0) {
+#endif
+            char hostname[64];
+            if (gethostname(hostname, sizeof(hostname)) == 0) {
+                strncpy(data->computer, hostname, 63);
+                data->computer[63] = '\0';
+            }
+#ifdef _WIN32
+            WSACleanup();
+        }
+#endif
 
         char *user = getenv("USER");
         if (user == NULL) {
@@ -83,8 +100,7 @@ int loadCredentials(Credentials* data, char* file_name) {
         }
         if (user != NULL) {
             strncpy(data->username, user, 63);
-        }
-        else {
+        } else {
             strncpy(data->username, "user", 63);
         }
 
